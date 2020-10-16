@@ -2,10 +2,11 @@ package com.newhood.framework.excel.listener;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.newhood.framework.core.exception.BaseException;
 import com.newhood.framework.excel.importer.ISave;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,11 +52,7 @@ public class ModelDataListener<T> extends AnalysisEventListener<T> {
     public void invokeHeadMap(Map<Integer, String> headMap, AnalysisContext context) {
         super.invokeHeadMap(headMap, context);
         log.info("AbstractNoModelDataListener 读取表头数据");
-        if (headerColumns.size() != 0) {
-            throw new BaseException("对应xls,Or,xlsx文件存在表头问题");
-        } else {
-            headerColumns = headMap;
-        }
+        headerColumns = headMap;
     }
 
     @Override
